@@ -1,5 +1,8 @@
 from fastapi import FastAPI
-from backend.app.routes.test import router as test_router
+from sqlalchemy import text
+
+from backend.app.database import engine
+from backend.app.routes.db_test import router as db_test_router
 
 app = FastAPI(
     title="GlobeTrotter API",
@@ -23,4 +26,15 @@ def health_check():
     }
 
 
-app.include_router(test_router)
+@app.get("/api/v1/db-test")
+def database_test():
+    with engine.connect() as connection:
+        result = connection.execute(text("SELECT 1"))
+        value = result.scalar()
+
+    return {
+        "database": "connected",
+        "result": value
+    }
+
+app.include_router(db_test_router)
