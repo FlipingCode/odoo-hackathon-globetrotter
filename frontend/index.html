@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full bg-slate-900 text-slate-100">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GlobeTrotter — Smart Travel Itinerary Planner</title>
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              50: '#f0f9ff',
+              100: '#e0f2fe',
+              500: '#0ea5e9',
+              600: '#0284c7',
+              700: '#0369a1',
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <!-- Chart.js for Admin/Budget Analytics -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  <!-- Make sure this matches your actual CSS file name! -->
+  <link rel="stylesheet" href="./src/css/style.css" />
+</head>
+
+<!-- This line dictates the dark background (bg-slate-950) -->
+
+<body class="h-full flex flex-col font-sans antialiased bg-slate-950 text-slate-100">
+
+  <!-- Error Catcher (Helps debug blank screens) -->
+  <script>
+    window.addEventListener('error', function (e) {
+      document.body.innerHTML += `<div style="background:#fee2e2;color:#991b1b;padding:20px;position:absolute;top:20px;left:20px;z-index:9999;border-radius:8px;"><strong>CRASH DETECTED:</strong><br/>${e.message}</div>`;
+    });
+  </script>
+
+  <!-- Global App Header / Navbar mount point -->
+  <div id="navbar-mount"></div>
+
+  <!-- Dynamic Page Content Mount Point -->
+  <main id="app-root" class="flex-1 overflow-y-auto"></main>
+
+  <!-- Main ES Module Entry -->
+  <script type="module" src="./src/js/app.js"></script>
+</body>
+
+</html>
